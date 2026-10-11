@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamber Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Operations</p>
+        <h1>Selamber Community Admin</h1>
+      </div>
+      <div class="header-actions">
+        <label class="token-label" for="admin-token">Admin token</label>
+        <input id="admin-token" type="password" autocomplete="current-password" placeholder="Set ADMIN_API_TOKEN" />
+        <button id="refresh-btn" class="secondary">Refresh</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Communities</span>
+          <strong id="stat-communities">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Confessions</span>
+          <strong id="stat-confessions">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Comments</span>
+          <strong id="stat-comments">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Reports</span>
+          <strong id="stat-reports">0</strong>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <section class="panel">
+          <h2>Create community</h2>
+          <form id="community-form" class="stacked-form">
+            <label>
+              Name
+              <input name="name" placeholder="Community name" required />
+            </label>
+            <label>
+              Slug
+              <input name="slug" placeholder="community-slug" required />
+            </label>
+            <label>
+              Description
+              <textarea name="description" rows="3" placeholder="Short description"></textarea>
+            </label>
+            <button type="submit">Add community</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Publish confession</h2>
+          <form id="confession-form" class="stacked-form">
+            <label>
+              Title
+              <input name="title" placeholder="Title" />
+            </label>
+            <label>
+              Community ID
+              <input name="community_id" type="number" value="1" min="1" required />
+            </label>
+            <label>
+              Body
+              <textarea name="body" rows="5" placeholder="Write the confession" required></textarea>
+            </label>
+            <label>
+              Telegram ID
+              <input name="telegram_id" type="number" value="1" />
+            </label>
+            <label>
+              First name
+              <input name="first_name" value="Admin" />
+            </label>
+            <button type="submit">Create confession</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="panel-grid lower-grid">
+        <section class="panel">
+          <h2>Communities</h2>
+          <ul id="communities" class="list"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Recent confessions</h2>
+          <ul id="confessions" class="list"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Moderation queue</h2>
+          <ul id="reports" class="list"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Hidden confessions</h2>
+          <ul id="hidden-confessions" class="list"></ul>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
